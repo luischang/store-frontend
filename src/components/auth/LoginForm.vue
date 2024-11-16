@@ -149,29 +149,46 @@ form .signup-link a:hover {
 </style>
 
 <script>
-export default{
-name:"LoginForm",
-data(){
-  return {
-    email:"",
-    password: ""
-  }
-},
-methods:{
-  iniciarSesion(){
-    let endpointURL = "/api/User/SignIn"
-    let user = {
-      email:this.email,
-      password:this.password
+export default {
+  name: "LoginForm",
+  data() {
+    return {
+      email: "",
+      password: ""
     }
-    this.$api.post(endpointURL,user)
-      .then(response => {
-        console.log(JSON.stringify(response))
-      }).catch(error=>{
-        console.log("El error es: " + error)
-      });
+  },
+  methods: {
+    iniciarSesion() {
+      let endpointURL = "/api/User/SignIn"
+      let user = {
+        email: this.email,
+        password: this.password
+      }
+      this.$api.post(endpointURL, user)
+        .then(response => {
+          //Save response.data in LocalStorage
+          localStorage.setItem("userData", JSON.stringify(response.data));
+
+          console.log(response)
+          //Notify success
+          this.$q.notify({
+            message: 'Bienvenido',
+            color: 'positive',
+            icon: 'check_circle'
+          })
+          //Redirect to  /dashboard
+          this.$router.push("/dashboard")
+
+        }).catch(error => {
+          //Notify error
+          this.$q.notify({
+            message: 'Error de autenticación',
+            color: 'negative',
+            icon: 'error'
+          })
+        });
+    }
   }
-}
 
 }
 
