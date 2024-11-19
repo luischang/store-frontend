@@ -5,7 +5,7 @@
       <ProductFilter />
     </div>
     <div class="product-list">
-      <h5>Aqui van los productos</h5>
+      <ProductList />
     </div>
 
   </div>
@@ -29,10 +29,11 @@
 
 <script>
 import ProductFilter from "src/components/product/ProductFilter.vue"
+import ProductList from "src/components/product/ProductList.vue"
 
 export default {
   name: "ProductPage",
-  components: { ProductFilter }
+  components: { ProductFilter, ProductList }
 
 }
 
