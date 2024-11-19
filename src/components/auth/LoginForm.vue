@@ -1,21 +1,23 @@
 <template>
-  <div class="wrapper">
-    <div class="title"><span>Login Form</span></div>
-    <form action="#">
-      <div class="row">
-        <i class="fas fa-user"></i>
-        <input v-model="email" type="text" placeholder="Email" required />
-      </div>
-      <div class="row">
-        <i class="fas fa-lock"></i>
-        <input v-model="password" type="password" placeholder="Password" required />
-      </div>
-      <div class="pass"><a href="#">Forgot password?</a></div>
-      <div class="row button">
-        <input type="button" value="Login" @click="iniciarSesion" />
-      </div>
-      <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
-    </form>
+  <div class="div-login">
+    <div class="wrapper">
+      <div class="title"><span>Login Form</span></div>
+      <form action="#">
+        <div class="row">
+          <i class="fas fa-user"></i>
+          <input v-model="email" type="text" placeholder="Email" required />
+        </div>
+        <div class="row">
+          <i class="fas fa-lock"></i>
+          <input v-model="password" type="password" placeholder="Password" required />
+        </div>
+        <div class="pass"><a href="#">Forgot password?</a></div>
+        <div class="row button">
+          <input type="button" value="Login" @click="iniciarSesion" />
+        </div>
+        <div class="signup-link">Not a member? <a href="#">Signup now</a></div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -30,7 +32,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {
+.div-login {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,7 +179,7 @@ export default {
             icon: 'check_circle'
           })
           //Redirect to  /dashboard
-          this.$router.push("/dashboard")
+          this.$router.push("/dashboard/product")
 
         }).catch(error => {
           //Notify error
