@@ -3,7 +3,7 @@
   <div class="product-list">
     <div class="product-grid">
       <div class="product-item" v-for="item in products" :key="item.id">
-        {{ item.description }}
+        <ProductItem :product="item" />
       </div>
     </div>
   </div>
@@ -18,8 +18,11 @@
 </style>
 
 <script>
+import ProductItem from "src/components/product/ProductItem.vue"
+
 export default {
   name: "ProductList",
+  components: { ProductItem },
   data() {
     return {
       products: []
@@ -44,6 +47,7 @@ export default {
         }).catch(error => {
           console.log(error);
           this.$q.notify({ message: 'Ocurrió un error', color: 'negative' });
+          this.$router.push("/")
         });
     }
   }
