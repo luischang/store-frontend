@@ -1,10 +1,10 @@
 <template>
   <div class="product-page">
     <div class="product-filter q-ml-md q-mr-xl">
-      <ProductFilter />
+      <ProductFilter @categoriaCambiada="actualizarCategoria" />
     </div>
     <div class="product-list">
-      <ProductList />
+      <ProductList :categoriaFiltrada="categoriaSeleccionada" />
     </div>
 
   </div>
@@ -32,7 +32,18 @@ import ProductList from "src/components/product/ProductList.vue"
 
 export default {
   name: "ProductPage",
-  components: { ProductFilter, ProductList }
+  components: { ProductFilter, ProductList },
+  data() {
+    return {
+      categoriaSeleccionada: null
+    }
+  },
+  methods: {
+    actualizarCategoria(categoria) {
+      console.log("El ID de la categoria desde ProductFilter es: " + categoria)
+      this.categoriaSeleccionada = categoria
+    }
+  }
 
 }
 
