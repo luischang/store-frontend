@@ -15,6 +15,10 @@ const routes = [
     path: "/register",
     component: () => import("components/auth/RegisterForm.vue"),
   },
+  {
+    path: "/login-quasar",
+    component: () => import("components/auth/LoginFormQuasar.vue"),
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
